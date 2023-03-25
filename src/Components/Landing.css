@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
+
+.firstTitle {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  font-size: 40px;
+}
