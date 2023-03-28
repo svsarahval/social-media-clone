@@ -1,32 +1,28 @@
-import react, { Component } from 'react';
+import React from 'react';
 import './Landing.css';
+import beautiful from './assets/youarebeautiful.jpg';
+import whatsDropping from './assets/whatsdropping.jpg';
+import letsDoLunch from './assets/letsdolunch.jpg';
+import greetingImage from './assets/greetingimage.jpg';
+import sociableLogo from './assets/Logo.png';
+import useNavigate from 'react-router';
 
 function Landing() {
   return (
     <div>
-      <div>
-        <header className='headers'>
-          <h1 className='firstTitle'>
-            Welcome to Sociable
-            <br />
-            <br />A place where anything is possible
-          </h1>
-
-          <img
-            className='sociableLogoPic'
-            src='assets/logo.png'
-            alt='logo'
-          ></img>
-        </header>
-      </div>
+      <header className='headers'>
+        <h1 className='firstTitle'>
+          Welcome to Sociable
+          <br />
+          <br />A place where anything is possible
+        </h1>
+        <img className='logo' src={sociableLogo} alt='logo' />
+      </header>
 
       <div className='pics'>
-        <img src='assets/youAreBeautiful.jpg' alt='Picture of a Lady'></img>
-        <img
-          src='social-media-clone\public\assets\whats dropping.jpg'
-          alt='Picture of a Man'
-        ></img>
-        <img src='assets/letsDoLunch.jpg' alt='Picture of a Family'></img>
+        <img className='pic1' src={beautiful} alt='A Lady' />
+        <img className='pic2' src={whatsDropping} alt='A Man' />
+        <img className='pic3' src={letsDoLunch} alt='A Family' />
       </div>
 
       <div>
@@ -35,9 +31,10 @@ function Landing() {
       </div>
 
       <div className='greeting'>
-        <img src='assets/greetingImage.jpg' alt='Greeting' />
+        <img src={greetingImage} alt='Greeting' />
       </div>
     </div>
   );
 }
+
 export default Landing;
