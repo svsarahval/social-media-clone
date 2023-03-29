@@ -1,11 +1,13 @@
 import react from 'react';
 import './App.css';
 import Landing from './Components/Landing';
+import SignIn from './Components/signInFiles/SignIn';
 
 function App() {
   return (
     <div className='App'>
-      <Landing></Landing>
+      <Landing />
+      <SignIn />
     </div>
   );
 }
