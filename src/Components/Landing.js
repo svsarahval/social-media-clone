@@ -5,7 +5,7 @@ import whatsDropping from './assets/whatsdropping.jpg';
 import letsDoLunch from './assets/letsdolunch.jpg';
 import greetingImage from './assets/greetingimage.jpg';
 import sociableLogo from './assets/Logo.png';
-import useNavigate from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Landing() {
   return (
@@ -26,8 +26,12 @@ function Landing() {
       </div>
 
       <div>
-        <button className='clickMe'>Sign Up</button>
-        <button className='clickMe'>Sign In</button>
+        <Link to='/signUp'>
+          <button className='clickMe'>Sign Up</button>
+        </Link>
+        <Link to='/signIn'>
+          <button className='clickMe'>Sign In</button>
+        </Link>
       </div>
 
       <div className='greeting'>
