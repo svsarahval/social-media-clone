@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEmail, setPassword, loginUser } from '../slices/userSlice';
+import { Link } from 'react-router-dom';
+import './SignIn.css';
+import sociableLogo from './assets/Logo.png';
 
 const SignIn = () => {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -28,27 +31,45 @@ const SignIn = () => {
 
   return (
     <div>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSignIn}>
-        <label>
-          Email:
-          <input type='email' value={email} onChange={handleEmailChange} />
-        </label>
+      <h1 className='words'>
+        Welcome Back
         <br />
-        <label>
-          Password:
-          <input
-            type='password'
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </label>
+        <br />
+        Sign In
+      </h1>
+      <img className='logo' src={sociableLogo} alt='logo' />
+      <form className='login' onSubmit={handleSignIn}>
+        <label className='label'>Email:</label>
+        <input
+          className='formBox'
+          type='email'
+          value={email}
+          onChange={handleEmailChange}
+        />
+
+        <br />
+        <label className='label'>Password:</label>
+        <input
+          className='formBox'
+          type='password'
+          value={password}
+          onChange={handlePasswordChange}
+        />
+
         <br />
         {error && <p>{error}</p>}
-        <button type='submit'>Sign In</button>
+        <Link to='/dashBoard'>
+          <button className='button' type='submit'>
+            Sign In
+          </button>
+        </Link>
       </form>
       <br />
-      <button onClick={handleSignUp}>Sign Up</button>
+      <Link to='/signUp'>
+        <button className='button' onClick={handleSignUp}>
+          Sign Up
+        </button>
+      </Link>
       {showSignUp && <div>This will navigate to the Sign Up page.</div>}
     </div>
   );

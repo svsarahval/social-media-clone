@@ -1,1 +1,42 @@
+.button {
+  color: #574242;
+  font-size: 15px;
+  border-color: #00aab5;
+  border-radius: 20%;
+  height: 35px;
+  width: 20em;
+}
+.button:hover {
+  background-color: #00aab5;
+}
 
+.login {
+  display: flex;
+  flex-direction: column;
+}
+
+.formBox {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  height: 38px;
+  color: #574242;
+  font-size: 20px;
+  border-radius: 8%;
+}
+
+.words {
+  text-align: center;
+  color: #00aab5;
+  font-size: 40px;
+  font-family: 'Imprima', sans-serif;
+}
+
+.label {
+  font-size: 25px;
+  font-family: 'Imprima', sans-serif;
+  color: #00aab5;
+}
