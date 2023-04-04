@@ -1,21 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState: {
     isLoggedIn: false,
-    email: '',
-    password: '',
     error: '',
   },
   reducers: {
-    setEmail: (state, action) => {
-      state.email = action.payload;
-    },
-    setPassword: (state, action) => {
-      state.password = action.payload;
-    },
     loginSuccess: (state) => {
       state.isLoggedIn = true;
       state.error = '';
@@ -27,23 +18,24 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setEmail, setPassword, loginSuccess, loginFailure } =
-  userSlice.actions;
+const { loginSuccess, loginFailure } = userSlice.actions;
 
-export const loginUser = (email, password) => async (dispatch) => {
+const loginUser = (email, password) => async (dispatch) => {
   try {
-    const res = await axios.get(
-      `https://login-page-sociable-default-rtdb.firebaseio.com/users.json?orderBy="email"&equalTo="${email}"`
+    const res = await fetch(
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAMz5TdOBI8Z9gYTJgW3I_2RsT_hFbCGc0',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: true }),
+      }
     );
-    const [userId, userData] = Object.entries(res.data)[0];
-    if (userData.password === password && userId.email === email) {
-      dispatch(loginSuccess());
-    } else {
-      dispatch(loginFailure('Invalid email or password'));
-    }
+    const data = await res.json();
+    console.log(data);
+    dispatch(loginSuccess());
   } catch (error) {
     dispatch(loginFailure('Invalid email or password'));
   }
 };
 
-export default userSlice.reducer;
+export { userSlice, loginUser };

@@ -1,0 +1,41 @@
+.userinfo {
+  font-size: 1.7em;
+  display: flex;
+  justify-content: left;
+  color: #00aab5;
+  font-size: 30px;
+  font-family: 'Imprima', sans-serif;
+}
+.top {
+  font-size: 1.9em;
+  color: #00aab5;
+  font-size: 40px;
+  font-family: 'Imprima', sans-serif;
+}
+.profilePic {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 25%;
+  height: 25%;
+  padding: 10px;
+}
+
+.container4posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3em;
+}
+
+.bttn {
+  color: #574242;
+  font-size: 15px;
+  border-color: #00aab5;
+  border-radius: 20%;
+  height: 25px;
+  width: 10em;
+}
+.bttn:hover {
+  background-color: #00aab5;
+}

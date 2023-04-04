@@ -5,28 +5,19 @@ import { Link } from 'react-router-dom';
 import './SignIn.css';
 import sociableLogo from './assets/Logo.png';
 
-const SignIn = () => {
-  const [showSignUp, setShowSignUp] = useState(false);
+function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
-  const email = useSelector((state) => state.user.email);
-  const password = useSelector((state) => state.user.password);
-  const error = useSelector((state) => state.user.error);
 
-  const handleEmailChange = (e) => {
-    dispatch(setEmail(e.target.value));
-  };
-
-  const handlePasswordChange = (e) => {
-    dispatch(setPassword(e.target.value));
-  };
-
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    dispatch(loginUser(email, password));
-  };
-
-  const handleSignUp = () => {
-    setShowSignUp(true);
+    try {
+      await dispatch(loginUser(email, password));
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -44,7 +35,7 @@ const SignIn = () => {
           className='formBox'
           type='email'
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <br />
@@ -53,11 +44,11 @@ const SignIn = () => {
           className='formBox'
           type='password'
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <br />
-        {error && <p>{error}</p>}
+        {/* {error && <p>{error}</p>} */}
         <Link to='/dashBoard'>
           <button className='button' type='submit'>
             Sign In
@@ -66,13 +57,12 @@ const SignIn = () => {
       </form>
       <br />
       <Link to='/signUp'>
-        <button className='button' onClick={handleSignUp}>
+        <button className='button' onClick={handleSignIn}>
           Sign Up
         </button>
       </Link>
-      {showSignUp && <div>This will navigate to the Sign Up page.</div>}
     </div>
   );
-};
+}
 
 export default SignIn;
